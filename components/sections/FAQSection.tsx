@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { FAQAccordion, type FAQItem } from "@/components/ui/FAQAccordion";
 
 interface FAQSectionProps {
@@ -30,7 +31,7 @@ export function FAQSection({
       <div className="edge container-max grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
           <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
-            <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+            <RuleLine />
             {eyebrow}
           </span>
           <h2 className="mt-4 text-[clamp(2.2rem,4vw,3.2rem)] font-display font-medium leading-[1.08] tracking-[-0.01em] text-ink text-balance">

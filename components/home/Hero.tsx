@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { cn } from "@/lib/cn";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Parallax } from "@/components/ui/Parallax";
 
 let pluginRegistered = false;
 function ensureSplitText() {
@@ -21,14 +22,14 @@ function ensureSplitText() {
 // Secure", "Technology Ready", "Technology Scalable".
 const words = ["Secure", "Connected", "Ready", "Automated", "Focused", "Scalable", "Responsive"];
 
-// "Technology" sets the headline scale in the geometric-grotesk display
-// face (Space Grotesk) at a confident bold weight. The cycling word
-// beside/below it is deliberately lighter and a step smaller — hierarchy
-// carried by weight and scale, not by italics or a second decorative
-// face, so it reads as one disciplined type system rather than two
-// competing headlines.
+// "Technology" and the cycling word share one exact type spec — same
+// size, same weight, same leading — so they sit as equal, parallel halves
+// of one continuous phrase ("Technology Secure", "Technology Connected")
+// rather than a headline with a smaller caption beside it. Hierarchy
+// between the active word and its trailing siblings in the stack comes
+// from colour alone (accent gold vs muted grey), not from type scale.
 const HEADLINE_SIZE = "font-display text-[clamp(3.1rem,6vw,6.75rem)] font-bold leading-[0.86] tracking-[-0.02em]";
-const WORD_SIZE = "font-display text-[clamp(2.5rem,4.6vw,5.25rem)] font-medium leading-[0.86] tracking-[-0.02em]";
+const WORD_SIZE = HEADLINE_SIZE;
 const WORD_TYPE_CLASS = cn(WORD_SIZE, "block transition-colors duration-700 ease-out");
 
 const CYCLE_MS = 1800;
@@ -47,10 +48,12 @@ const CYCLE_REPEATS = 30;
 const LOOP_WORDS = Array.from({ length: words.length * CYCLE_REPEATS }, (_, i) => words[i % words.length]);
 const MAX_TICK = LOOP_WORDS.length - 1 - TRAIL_COUNT;
 
-// Warm gold sampled from herobg.webp's light beams — the one accent color
-// against the image's navy/black, used only for the active word so it
-// still pops the way `text-blue` did on the old white background.
-const ACCENT_GOLD = "#e3b567";
+// Warm accent chosen as a deliberate complement to herobgimg.webp's cool
+// blue light beams — the one warm color against the image's navy/blue.
+// Used solid for the thin eyebrow rule; the cycling word itself uses the
+// richer ".text-gold-shine" gradient (see globals.css) instead of this
+// flat value, so it reads as metallic gold rather than plain yellow.
+const ACCENT_GOLD = "#d4af37";
 
 export function Hero() {
   const eyebrowRef = useRef<HTMLDivElement>(null);
@@ -189,22 +192,24 @@ export function Hero() {
 
   return (
     <section className="on-dark relative isolate overflow-hidden bg-paper">
-      <Image
-        src="/herobg.webp"
-        alt=""
-        aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-55"
-      />
+      <Parallax speed={0.06} className="absolute inset-x-0 -top-[6%] -z-10 h-[112%]">
+        <Image
+          src="/herobgimg.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-70"
+        />
+      </Parallax>
       {/* A darkening scrim over the whole image, not just the text side —
-         herobg.webp's light beam sits right where the word stack lives, so
-         the right edge still needs a contrast floor even though the left
-         (behind the static headline/paragraph) gets extra darkening on
-         top of it. Without this, light text over the beam reads as barely
-         there. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/45" />
+         herobgimg.webp's bright light beam sits center-right, right where
+         the word stack lives, so that side needs a real contrast floor too,
+         even though the left (behind the static headline/paragraph) gets
+         extra darkening on top of it. Without this, light text over the
+         beam reads as barely there. */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/78 via-black/58 to-black/62" />
 
       <div className="edge relative flex min-h-[100svh] flex-col justify-center gap-10 pb-24 pt-32 lg:gap-0 lg:pb-28 lg:pt-36">
         {/* Eyebrow sits ABOVE both the heading and the word stack (not
@@ -248,8 +253,7 @@ export function Hero() {
               <div className="block h-[1.15em] overflow-hidden lg:hidden">
                 <span
                   key={tick}
-                  className="hero-word-in block font-medium"
-                  style={{ color: ACCENT_GOLD }}
+                  className="hero-word-in text-gold-shine block"
                 >
                   {activeWord}
                 </span>
@@ -290,7 +294,7 @@ export function Hero() {
             style={rowHeight ? { height: (TRAIL_COUNT + 1) * rowHeight } : undefined}
           >
             <div
-              className="flex flex-col will-change-transform"
+              className="flex flex-col gap-y-3 will-change-transform"
               style={{
                 transform: `translateY(${listOffset}px)`,
                 transition: "transform 0.8s cubic-bezier(0.65,0,0.35,1)",
@@ -302,8 +306,10 @@ export function Hero() {
                   ref={(el) => {
                     itemRefs.current[i] = el;
                   }}
-                  className={cn(WORD_TYPE_CLASS, i !== tick && "text-white/55")}
-                  style={i === tick ? { color: ACCENT_GOLD } : undefined}
+                  className={cn(
+                    WORD_TYPE_CLASS,
+                    i === tick ? "text-gold-shine" : "text-white/55"
+                  )}
                 >
                   {word}
                 </div>

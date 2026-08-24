@@ -76,10 +76,9 @@ export const siteConfig = {
 
   // Single point of truth for the site's canonical domain — every
   // canonical URL, OG/Twitter tag, sitemap entry and JSON-LD @id/url
-  // derives from this one value. Swap it here once the .com domain for
-  // the European market site is registered and live; nothing else in the
-  // codebase hardcodes a domain.
-  siteUrl: "https://royalsarai.ae",
+  // derives from this one value; nothing else in the codebase hardcodes
+  // a domain.
+  siteUrl: "https://royalsarai.com",
 
   // Primary nav matches the client-specified page set. Industries and
   // Insights stay live as pages (linked from the footer) but sit off the

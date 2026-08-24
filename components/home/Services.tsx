@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { Modal } from "@/components/ui/Modal";
 import { MediaFrame } from "@/components/media/MediaFrame";
 import { servicesContent } from "@/lib/services-content";
@@ -122,7 +123,7 @@ export function Services() {
       <div className="edge container-max">
         <Reveal>
           <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
-            <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+            <RuleLine />
             Core Services
           </span>
           <h2 className="mt-5 text-[clamp(2.2rem,4.2vw,3.6rem)] font-display font-medium leading-[1.05] tracking-[-0.01em] text-ink text-balance">

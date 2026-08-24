@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Building2, Layers3, ShieldCheck } from "lucide-react";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { Parallax } from "@/components/ui/Parallax";
 import { MediaFrame } from "@/components/media/MediaFrame";
 
@@ -67,7 +68,7 @@ export function WhyRoyalSarai() {
         <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Why Royal Sarai Technologies
             </span>
             <h2 className="mt-5 text-[clamp(2.2rem,4.2vw,3.6rem)] font-display font-medium leading-[1.05] tracking-[-0.01em] text-ink text-balance">

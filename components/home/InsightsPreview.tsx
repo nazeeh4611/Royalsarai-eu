@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { MediaFrame } from "@/components/media/MediaFrame";
 import { insightsArticles } from "@/lib/insights-content";
 import type { MediaId } from "@/lib/media";
@@ -14,7 +15,7 @@ export function InsightsPreview() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Insights
             </span>
             <h2 className="mt-3 text-[clamp(1.6rem,2.6vw,2.2rem)] font-display font-medium leading-[1.1] tracking-[-0.01em] text-ink">

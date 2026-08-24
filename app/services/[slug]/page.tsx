@@ -8,6 +8,7 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { MediaFrame } from "@/components/media/MediaFrame";
 import { AbstractScene } from "@/components/media/AbstractScene";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
@@ -90,7 +91,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max grid gap-16 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               {service.problem.title}
             </span>
             <p className="mt-5 font-display text-[clamp(1.3rem,2vw,1.6rem)] font-medium leading-[1.4] text-ink text-balance">
@@ -99,7 +100,7 @@ export default async function ServiceDetailPage({
           </Reveal>
           <Reveal delay={0.1}>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               {service.solution.title}
             </span>
             <p className="mt-5 font-display text-[clamp(1.3rem,2vw,1.6rem)] font-medium leading-[1.4] text-ink text-balance">
@@ -113,7 +114,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Capabilities
             </span>
             <h2 className="mt-5 max-w-lg text-[clamp(1.7rem,3vw,2.3rem)] font-display font-medium leading-[1.15] tracking-[-0.01em] text-ink">
@@ -140,7 +141,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max relative">
           <Reveal className="max-w-xl">
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Process
             </span>
             <h2 className="mt-5 text-[clamp(1.7rem,3vw,2.3rem)] font-display font-medium leading-[1.15] tracking-[-0.01em]">
@@ -157,7 +158,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Technology
             </span>
             <h2 className="mt-5 text-[clamp(1.5rem,2.6vw,2rem)] font-display font-medium leading-[1.2] tracking-[-0.01em] text-ink text-balance">
@@ -182,7 +183,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Business value
             </span>
           </Reveal>
@@ -204,7 +205,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Frequently asked
             </span>
           </Reveal>
@@ -216,7 +217,7 @@ export default async function ServiceDetailPage({
         <div className="edge container-max">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Related services
             </span>
           </Reveal>

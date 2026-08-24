@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { Breadcrumbs, type Crumb } from "@/components/ui/Breadcrumbs";
 
 interface PageHeroProps {
@@ -22,7 +23,7 @@ export function PageHero({ eyebrow, title, description, crumbs, visual }: PageHe
           <div>
             <Reveal>
               <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-                <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+                <RuleLine />
                 {eyebrow}
               </span>
             </Reveal>

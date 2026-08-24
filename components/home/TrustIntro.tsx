@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { Counter } from "@/components/ui/Counter";
 
 export function TrustIntro() {
@@ -11,7 +12,7 @@ export function TrustIntro() {
         <div>
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               What we&rsquo;re licensed to deliver
             </span>
             <p className="mt-6 font-display text-[clamp(1.7rem,2.8vw,2.5rem)] font-medium leading-[1.22] tracking-[-0.01em] text-ink text-balance">

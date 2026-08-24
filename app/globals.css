@@ -242,6 +242,51 @@ button:focus-visible,
   transform-origin: left;
 }
 
+/* Shiny metallic-gold treatment for the Hero's cycling word — a wide gold
+   gradient with a bright highlight band, clipped to the text and swept
+   across it on a loop, like light passing over brushed gold foil. The
+   gradient is 3x the text width so the sweep has room to travel without
+   the highlight band ever fully leaving the letters. */
+.text-gold-shine {
+  background-image: linear-gradient(
+    100deg,
+    #8a6a1f 0%,
+    #b8860b 12%,
+    #d4af37 24%,
+    #f7e7a1 34%,
+    #fff8dc 40%,
+    #fffdf5 44%,
+    #fff8dc 48%,
+    #f7e7a1 54%,
+    #d4af37 64%,
+    #b8860b 76%,
+    #8a6a1f 88%,
+    #a3812a 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shine-sweep 3.4s ease-in-out infinite;
+}
+
+@keyframes gold-shine-sweep {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-gold-shine {
+    animation: none;
+    background-position: 0% 0;
+  }
+}
+
 /* Hero's cycling heading word: a plain CSS keyframe (not a JS/rAF-driven
    tween) so the fade-in always reaches its final visible state even if the
    tab is backgrounded/throttled when a word swaps in — this is real

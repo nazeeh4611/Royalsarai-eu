@@ -5,6 +5,7 @@ import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { MediaFrame } from "@/components/media/MediaFrame";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/home/CTASection";
@@ -70,7 +71,7 @@ export default function GlobalMarketsPage() {
         <div className="edge container-max">
           <Reveal className="max-w-2xl">
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Markets we serve
             </span>
             <p className="mt-6 font-display text-[clamp(1.3rem,2vw,1.7rem)] font-medium leading-[1.45] text-ink text-balance">
@@ -118,7 +119,7 @@ export default function GlobalMarketsPage() {
         <div className="edge container-max">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               How we work across borders
             </span>
           </Reveal>

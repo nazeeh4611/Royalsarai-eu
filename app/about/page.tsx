@@ -5,6 +5,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, Stagger } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { MediaFrame } from "@/components/media/MediaFrame";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
@@ -69,7 +70,7 @@ export default function AboutPage() {
         <div className="edge container-max grid gap-16 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Who we are
             </span>
             <p className="mt-5 font-display text-[clamp(1.15rem,1.8vw,1.4rem)] leading-[1.55] text-ink text-balance">
@@ -86,7 +87,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               What we believe
             </span>
             <p className="mt-5 font-display text-[clamp(1.15rem,1.8vw,1.4rem)] leading-[1.55] text-ink text-balance">
@@ -108,7 +109,7 @@ export default function AboutPage() {
         <div className="edge container-max">
           <Reveal className="max-w-lg">
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               What we build
             </span>
             <h2 className="mt-5 text-[clamp(1.7rem,3vw,2.3rem)] font-display font-medium leading-[1.15] tracking-[-0.01em]">
@@ -136,7 +137,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Company information
             </span>
             <p className="mt-5 max-w-lg font-display text-[clamp(1.15rem,1.8vw,1.4rem)] leading-[1.55] text-ink text-balance">
@@ -159,7 +160,7 @@ export default function AboutPage() {
         <div className="edge container-max max-w-2xl">
           <Reveal>
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               International business &amp; strategic partnerships
             </span>
             <p className="mt-6 font-display text-[clamp(1.3rem,2vw,1.7rem)] font-medium leading-[1.45] text-ink text-balance">

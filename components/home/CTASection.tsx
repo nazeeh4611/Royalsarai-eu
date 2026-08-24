@@ -1,27 +1,31 @@
 import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Parallax } from "@/components/ui/Parallax";
 
 export function CTASection() {
   return (
     <section className="on-dark relative isolate overflow-hidden bg-paper py-16 text-ink lg:py-24">
-      <Image
-        src="/cyberhome.png"
-        alt=""
-        aria-hidden="true"
-        fill
-        sizes="100vw"
-        className="object-cover opacity-[0.14]"
-      />
+      <Parallax speed={0.08} className="absolute inset-x-0 -top-[8%] -z-10 h-[116%]">
+        <Image
+          src="/cyberhome.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-[0.14]"
+        />
+      </Parallax>
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/90" />
 
       <div className="edge container-max relative flex flex-col items-center text-center">
         <Reveal>
           <span className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
-            <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+            <RuleLine />
             Start a project
-            <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+            <RuleLine />
           </span>
         </Reveal>
 

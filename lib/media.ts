@@ -50,15 +50,21 @@ export const mediaLibrary = {
   }),
   "home-why-royal-sarai": slot({
     category: "modern-office",
-    alt: "A technology team collaborating across web, security and infrastructure work",
+    alt: "A modern office workspace with global operations monitoring",
+    src: "/desk-worldmap.webp",
+    fit: "cover",
   }),
   "home-why-royal-sarai-badge": slot({
     category: "cybersecurity",
-    alt: "Data security operations and access control systems",
+    alt: "Server infrastructure with a network connectivity visualisation",
+    src: "/server-room.webp",
+    fit: "cover",
   }),
   "services-overview-hero": slot({
     category: "enterprise-technology",
-    alt: "Editorial view of an enterprise technology workspace",
+    alt: "An enterprise technology workspace with monitoring dashboards",
+    src: "/desk-worldmap.webp",
+    fit: "cover",
   }),
   "service-web-hero": slot({
     category: "software-interface",
@@ -98,7 +104,9 @@ export const mediaLibrary = {
   }),
   "about-approach": slot({
     category: "modern-office",
-    alt: "A focused technology team at work",
+    alt: "A focused technology team reviewing a project together",
+    src: "/meeting-room.webp",
+    fit: "cover",
   }),
   "industries-hero": slot({
     category: "global-business",
@@ -108,7 +116,9 @@ export const mediaLibrary = {
   }),
   "projects-hero": slot({
     category: "enterprise-technology",
-    alt: "Representative technology work across web, security, systems and networks",
+    alt: "Server infrastructure representing technology work across web, security, systems and networks",
+    src: "/server-room.webp",
+    fit: "cover",
   }),
   "global-markets-hero": slot({
     category: "global-business",
@@ -124,25 +134,27 @@ export const mediaLibrary = {
   }),
   "insight-security-architecture-before-first-line-of-code": slot({
     category: "cybersecurity",
-    src: "/cyberinsight.webp",
+    src: "/hero.webp",
     fit: "cover",
-    alt: "A digital shield representing security-first system design",
+    alt: "A macro view of circuit board architecture, representing system-level engineering",
   }),
   "insight-website-rebuild-vs-redesign": slot({
     category: "software-interface",
-    src: "/webhome.webp",
+    src: "/heroside.webp",
     fit: "cover",
-    alt: "A web platform interface representing a website rebuild or redesign",
+    alt: "Analytics dashboards reviewed on a laptop, representing a website rebuild decision",
   }),
   "insight-what-network-resilience-means-for-a-growing-business": slot({
     category: "network-infrastructure",
-    src: "/network.webp",
+    src: "/herobgs.webp",
     fit: "cover",
-    alt: "Technicians connecting network infrastructure hardware",
+    alt: "Abstract visualisation of connected network infrastructure",
   }),
   "contact-hero": slot({
-    category: "architecture",
-    alt: "A modern business district at dusk",
+    category: "modern-office",
+    alt: "A modern office workspace with a global operations view",
+    src: "/desk-worldmap.webp",
+    fit: "cover",
   }),
 } satisfies Record<string, MediaEntry>;
 

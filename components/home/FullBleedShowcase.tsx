@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { Parallax } from "@/components/ui/Parallax";
 
 export function FullBleedShowcase() {
@@ -19,7 +20,7 @@ export function FullBleedShowcase() {
       <div className="edge container-max relative w-full pb-10 lg:pb-14">
         <Reveal>
           <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
-            <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+            <RuleLine />
             Infrastructure
           </span>
           <h2 className="mt-4 max-w-2xl text-[clamp(2rem,4.6vw,3.8rem)] font-display font-medium leading-[1.05] tracking-[-0.01em] text-white text-balance">

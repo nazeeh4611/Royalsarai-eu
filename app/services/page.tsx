@@ -8,6 +8,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
+import { RuleLine } from "@/components/ui/RuleLine";
 import { MediaFrame } from "@/components/media/MediaFrame";
 import { AbstractScene } from "@/components/media/AbstractScene";
 import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
@@ -115,7 +116,7 @@ export default function ServicesOverviewPage() {
         <div className="edge container-max relative">
           <Reveal className="max-w-xl">
             <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              <span className="h-px w-6 shrink-0 bg-blue" aria-hidden="true" />
+              <RuleLine />
               Process
             </span>
             <h2 className="mt-5 text-[clamp(1.7rem,3vw,2.3rem)] font-display font-medium leading-[1.15] tracking-[-0.01em] text-ink">
