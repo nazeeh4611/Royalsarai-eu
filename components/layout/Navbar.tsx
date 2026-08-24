@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import gsap from "gsap";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { siteConfig } from "@/lib/site-config";
@@ -17,7 +16,6 @@ function isActivePath(pathname: string, href: string) {
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
@@ -26,41 +24,9 @@ export function Navbar() {
     };
   }, [open]);
 
-  // Hides the floating nav on a confident scroll-down, brings it straight
-  // back on any scroll-up (or near the top) — a restrained, premium detail
-  // rather than a flashy one, and disabled outright for reduced-motion
-  // visitors and while the mobile menu is open (its own button lives in
-  // this header, so it must stay put and reachable).
-  useEffect(() => {
-    if (open) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const header = headerRef.current;
-    if (!header) return;
-
-    const setY = gsap.quickTo(header, "y", { duration: 0.45, ease: "power3.out" });
-    let lastY = window.scrollY;
-    let hidden = false;
-
-    const onScroll = () => {
-      const y = window.scrollY;
-      const delta = y - lastY;
-      if (y > 140 && delta > 4 && !hidden) {
-        setY(-120);
-        hidden = true;
-      } else if (hidden && (delta < -4 || y < 140)) {
-        setY(0);
-        hidden = false;
-      }
-      lastY = y;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [open]);
-
   return (
     <>
-      <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
+      <header className="fixed inset-x-0 top-0 z-50">
         {/* Always the floating pill — no separate transparent/top-of-page
            state to toggle, so the nav looks and reads the same whether the
            page behind it is a light section or the home hero's dark

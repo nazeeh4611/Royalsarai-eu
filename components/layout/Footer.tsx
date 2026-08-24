@@ -105,11 +105,22 @@ export function Footer() {
 
       <div
         aria-hidden="true"
-        className="border-t border-line py-8 text-center"
+        className="overflow-hidden border-t border-line py-8"
       >
-        <span className="select-none text-[clamp(1.6rem,4.5vw,3.2rem)] font-extrabold uppercase leading-none tracking-[-0.02em] text-ink/15">
-          Royal Sarai Technologies
-        </span>
+        <div
+          className="marquee-track flex w-max items-center"
+          style={{ animationDuration: "26s" }}
+        >
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span
+              key={i}
+              className="mx-8 flex shrink-0 select-none items-center gap-8 whitespace-nowrap text-[clamp(2.8rem,8vw,6.5rem)] font-extrabold uppercase leading-none tracking-[-0.02em] text-ink"
+            >
+              Royal Sarai Technologies
+              <span className="size-[0.6vw] shrink-0 rounded-full bg-blue" />
+            </span>
+          ))}
+        </div>
       </div>
     </footer>
   );

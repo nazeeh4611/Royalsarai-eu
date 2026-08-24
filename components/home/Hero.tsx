@@ -28,7 +28,7 @@ const words = ["Secure", "Connected", "Ready", "Automated", "Focused", "Scalable
 // rather than a headline with a smaller caption beside it. Hierarchy
 // between the active word and its trailing siblings in the stack comes
 // from colour alone (accent gold vs muted grey), not from type scale.
-const HEADLINE_SIZE = "font-display text-[clamp(3.1rem,6vw,6.75rem)] font-bold leading-[0.86] tracking-[-0.02em]";
+const HEADLINE_SIZE = "font-display text-[clamp(3.3rem,7.8vw,9.25rem)] font-bold leading-[0.86] tracking-[-0.02em]";
 const WORD_SIZE = HEADLINE_SIZE;
 const WORD_TYPE_CLASS = cn(WORD_SIZE, "block transition-colors duration-700 ease-out");
 
@@ -260,7 +260,7 @@ export function Hero() {
               </div>
             </h1>
 
-            <p ref={subRef} className="mt-7 max-w-xs text-xl leading-relaxed text-white/85">
+            <p ref={subRef} className="mt-7 max-w-sm text-2xl font-medium leading-relaxed text-white/85">
               A technology company delivering web design, cyber security,
               computer systems and IT network services — one accountable
               team for European businesses.

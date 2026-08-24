@@ -329,6 +329,30 @@ button:focus-visible,
   animation: breathe-ring 2.6s ease-out infinite;
 }
 
+/* Continuous horizontal loop for the footer's closing wordmark band. The
+   track renders its content twice back-to-back; animating exactly -50%
+   moves the first copy fully out of view right as the second copy lands
+   in the start position, so the loop has no visible seam or reset jump. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
+
 /* Testimonials rail: edges fade into the section background. The
    auto-scroll itself is JS-driven (rAF nudging scrollLeft) so it can yield
    to real touch/pointer scrolling — see components/ui/Testimonials.tsx. */
