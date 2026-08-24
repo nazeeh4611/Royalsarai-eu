@@ -67,7 +67,7 @@ export const siteConfig = {
   contact: {
     phoneDisplay: "+374 336 88080",
     phoneHref: "tel:+37433688080",
-    email: "info@royalsaraitechnologies.com",
+    email: "info@royalsarai.com",
     // PLACEHOLDER — digits only (country code, no "+", no spaces), used to
     // build the wa.me deep link in the WhatsApp widget. This is not a real,
     // monitored WhatsApp Business number yet — replace before launch.

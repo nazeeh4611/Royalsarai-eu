@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/cn";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Parallax } from "@/components/ui/Parallax";
@@ -11,7 +12,7 @@ import { Parallax } from "@/components/ui/Parallax";
 let pluginRegistered = false;
 function ensureSplitText() {
   if (!pluginRegistered) {
-    gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(SplitText, ScrollTrigger);
     pluginRegistered = true;
   }
 }
@@ -28,7 +29,7 @@ const words = ["Secure", "Connected", "Ready", "Automated", "Focused", "Scalable
 // rather than a headline with a smaller caption beside it. Hierarchy
 // between the active word and its trailing siblings in the stack comes
 // from colour alone (accent gold vs muted grey), not from type scale.
-const HEADLINE_SIZE = "font-display text-[clamp(3.3rem,7.8vw,9.25rem)] font-bold leading-[0.86] tracking-[-0.02em]";
+const HEADLINE_SIZE = "font-display text-[clamp(3rem,7vw,8.25rem)] font-bold leading-[0.96] tracking-[-0.02em]";
 const WORD_SIZE = HEADLINE_SIZE;
 const WORD_TYPE_CLASS = cn(WORD_SIZE, "block transition-colors duration-700 ease-out");
 
@@ -56,6 +57,8 @@ const MAX_TICK = LOOP_WORDS.length - 1 - TRAIL_COUNT;
 const ACCENT_GOLD = "#d4af37";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
   const lineAccentRef = useRef<HTMLSpanElement>(null);
   const line1Ref = useRef<HTMLSpanElement>(null);
@@ -134,6 +137,78 @@ export function Hero() {
     };
   }, []);
 
+  // Restrained 3D hover tilt — the headline/word-stack plane leans very
+  // slightly toward the cursor, like a single tilted pane of glass rather
+  // than independently-moving layers. Desktop-only (fine pointer + real
+  // hover support) so nothing fires from touch taps/scroll momentum on
+  // mobile, and skipped entirely for reduced-motion visitors.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)");
+    if (!mq.matches) return;
+
+    const section = sectionRef.current;
+    const grid = gridRef.current;
+    if (!section || !grid) return;
+
+    const TILT_DEG = 3.5;
+    gsap.set(grid, { transformPerspective: 1200, transformStyle: "preserve-3d" });
+    const setRotateX = gsap.quickTo(grid, "rotationX", { duration: 0.7, ease: "power3.out" });
+    const setRotateY = gsap.quickTo(grid, "rotationY", { duration: 0.7, ease: "power3.out" });
+
+    const handleMove = (event: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      setRotateY(px * TILT_DEG * 2);
+      setRotateX(-py * TILT_DEG * 2);
+    };
+    const handleLeave = () => {
+      setRotateX(0);
+      setRotateY(0);
+    };
+
+    section.addEventListener("mousemove", handleMove);
+    section.addEventListener("mouseleave", handleLeave);
+    return () => {
+      section.removeEventListener("mousemove", handleMove);
+      section.removeEventListener("mouseleave", handleLeave);
+      gsap.set(grid, { clearProps: "transform,transformPerspective,transformStyle" });
+    };
+  }, [reducedMotion]);
+
+  // Scroll-linked 3D depth — as the hero scrolls up out of view, its content
+  // plane tilts back and recedes slightly, as if pivoting away in 3D space
+  // rather than just sliding off-screen. Scrubbed to scroll position (no
+  // fixed duration) so it always tracks exactly where the visitor is.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (!section || !content) return;
+
+    gsap.set(section, { perspective: 1600 });
+    gsap.set(content, { transformStyle: "preserve-3d", transformOrigin: "center top" });
+
+    const ctx = gsap.context(() => {
+      gsap.to(content, {
+        rotationX: 8,
+        y: -40,
+        scale: 0.94,
+        opacity: 0.55,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.4,
+        },
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, [reducedMotion]);
+
   // Word highlight is a plain timer, deliberately NOT scroll-driven —
   // it must keep cycling the instant the hero loads and for as long as it's
   // on screen, independent of whether/how far the visitor has scrolled.
@@ -191,7 +266,7 @@ export function Hero() {
   const activeWord = LOOP_WORDS[tick];
 
   return (
-    <section className="on-dark relative isolate overflow-hidden bg-paper">
+    <section ref={sectionRef} className="on-dark relative isolate overflow-hidden bg-paper">
       <Parallax speed={0.06} className="absolute inset-x-0 -top-[6%] -z-10 h-[112%]">
         <Image
           src="/herobgimg.webp"
@@ -211,7 +286,10 @@ export function Hero() {
          beam reads as barely there. */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/78 via-black/58 to-black/62" />
 
-      <div className="edge relative flex min-h-[100svh] flex-col justify-center gap-10 pb-24 pt-32 lg:gap-0 lg:pb-28 lg:pt-36">
+      <div
+        ref={contentRef}
+        className="edge relative flex min-h-[100svh] flex-col justify-center gap-10 pb-24 pt-32 lg:gap-0 lg:pb-28 lg:pt-36"
+      >
         {/* Eyebrow sits ABOVE both the heading and the word stack (not
            just above the heading) so the text column and the stack column
            both start their content from the exact same shared top offset
@@ -250,7 +328,7 @@ export function Hero() {
               <span ref={line1Ref} className="block">
                 Technology
               </span>
-              <div className="block h-[1.15em] overflow-hidden lg:hidden">
+              <div className="mt-3 block h-[1.15em] overflow-hidden lg:hidden">
                 <span
                   key={tick}
                   className="hero-word-in text-gold-shine block"
@@ -294,7 +372,7 @@ export function Hero() {
             style={rowHeight ? { height: (TRAIL_COUNT + 1) * rowHeight } : undefined}
           >
             <div
-              className="flex flex-col gap-y-3 will-change-transform"
+              className="flex flex-col will-change-transform"
               style={{
                 transform: `translateY(${listOffset}px)`,
                 transition: "transform 0.8s cubic-bezier(0.65,0,0.35,1)",

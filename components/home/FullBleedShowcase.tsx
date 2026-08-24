@@ -8,8 +8,8 @@ export function FullBleedShowcase() {
     <section className="relative isolate flex min-h-[360px] items-end overflow-hidden bg-indigo sm:min-h-[440px] lg:min-h-[520px]">
       <Parallax speed={0.08} className="absolute inset-x-0 -top-[10%] -z-10 h-[120%]">
         <Image
-          src="/built.webp"
-          alt="Data security operations and access control systems"
+          src="/a.webp"
+          alt="A team collaborating around a shared table, laptops open, supporting the infrastructure behind a business"
           fill
           sizes="100vw"
           className="object-cover"

@@ -103,9 +103,9 @@ export const mediaLibrary = {
     alt: "Royal Sarai Technologies wordmark",
   }),
   "about-approach": slot({
-    category: "modern-office",
-    alt: "A focused technology team reviewing a project together",
-    src: "/meeting-room.webp",
+    category: "global-business",
+    alt: "A desk with a globe, a world map and business reports, overlooking a city skyline",
+    src: "/b.webp",
     fit: "cover",
   }),
   "industries-hero": slot({
